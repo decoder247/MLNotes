@@ -1,6 +1,8 @@
 # Hands-On Machine Learning (HOML) Notes
 *Notes and summary from Aurélien Geron's book by the same name (HOML)*
 
+#### ❗❗ Last stopped at page: 32
+
 ## Table of Contents
 | Index | Section                                |
 |:-----:|----------------------------------------|
@@ -54,13 +56,20 @@
 ## <a name="sec2"></a>2. Chapter I-1: The ML Landscape
 **Reference from p. 29 - 61*
 
-Please refer to the Notes-HOML document in the repository: [Link here][99]
+#### Definition
+A computer program is said to learn from experience (E), with respect to task (T) and some performance measure (P), if its performance on T, as measured by P, improves with experience E. 
+> I.O.W. - A program with experience, should perform better on new tasks if it is said to be 'learning'.
+
+#### The traditional approach VS the new - ML
+![The traditional approach][i1]
+Traditional, analytical approaches require an iterative process where you look at a set of problem, identify and devise a set a solutions that tackle a subset of the problem, and iterate from there so that the final solution solves the problem completely - i.e. a normal software dev process.
+
+However, instead of learning about the problem ourselves, identify patterns to solve ourselves, and specific solutions to each problems ourselves, we can get a computer to do it, faster and more straightforwardly with all the 21st century computational power made available to us. ***This is usually shorter, easier to mantain, and more accurate.***
 
 ---
 [](Reference!------)  
 
-[1]: https://www.coursera.org/learn/machine-learning/ "link"
 [2]: https://www.coursera.org/course/neuralnets
 [3]: http://shop.oreilly.com/product/0636920033400.do
 [book-github]: https://github.com/ageron/handson-ml2 
-[99]: www.notes-homl.com
+[i1]: https://i.imgur.com/DhjVk61.png "source - https://imgur.com/a/qvyuhVh"
