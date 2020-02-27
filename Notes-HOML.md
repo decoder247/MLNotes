@@ -1,13 +1,15 @@
 # Hands-On Machine Learning (HOML) Notes
 *Notes and summary from Aurélien Geron's book by the same name (HOML)*
 
-#### ❗❗ Last stopped at page: 32
+#### ❗❗ Last stopped at page: 38
 
 ## Table of Contents
-| Index | Section                                |
-|:-----:|----------------------------------------|
-| 1.    | [Preface summary](#sec1)               |
-| 2.    | [Chapter I-1: The ML Landscape](#sec2) |
+| Index | Section                                       |
+|:-----:|-----------------------------------------------|
+| 1.    | [Preface summary](#sec1)                      |
+| 2.    | [Chapter I-1: The ML Landscape](#sec2)        |
+| 3.    | [Chapter I-1: Exercises](#sec3)               |
+| 4.    | [4. Chapter I-2: End-to-End ML project](#sec4)|
 
 ---
 ## <a name="sec1"></a>1. Preface summary*
@@ -64,9 +66,69 @@ A computer program is said to learn from experience (E), with respect to task (T
 ![The traditional approach][i1]
 Traditional, analytical approaches require an iterative process where you look at a set of problem, identify and devise a set a solutions that tackle a subset of the problem, and iterate from there so that the final solution solves the problem completely - i.e. a normal software dev process.
 
+To summarize, ML is great for:
+* Problems requiring a lot of hand-tuning and long list of rules
+* Fluctuating environments: ML adapts to new data
+* Complex problems without a good solution at all
+* Getting insights about complex problems
+
 However, instead of learning about the problem ourselves, identify patterns to solve ourselves, and specific solutions to each problems ourselves, we can get a computer to do it, faster and more straightforwardly with all the 21st century computational power made available to us. ***This is usually shorter, easier to mantain, and more accurate.***
 
+In addition to this, the ML approach is adaptable to changes in new data. I.e. ***if the behaviour of new data is slightly different, the algorithm is able to adapt its solution without outside intervention. -> More independent than an analytical solution.***
+
+Further, ML can solve problems that are either too complex. For complex solutions via traditional approaches - ***ML algorithms can be easily deployed, to solve complex problems, and find patterns in the problem space that is very hard to find traditionally***.
+
+Finally, ML can ***help humans learn and discover patterns to the problem. I.e. reveal correlations. This is called Data Mining***
+
+#### Types of ML systems
+Main categories:
+1. Supervision level (Sup, semi, un, reinforcement)
+2. Ability to learn on the fly (Online vs Batch)
+3. Instance based (comparing new to known data points) vs model-based learning (detect pattern in data for predictions)
+
+Supervised Learning:
+* *Classification*: Feed data with labels
+* *Prediction via regression*: Feed predictors (features), to predict a task's future values
+* Regression algorithms can be used for classification, i.e. *logistic regression* (probability of belonging to a class)
+* Types:
+    * KNN
+    * Regressions (Linear, logistic)
+    * Support vector machines (SVM)
+    * Decision trees and random forests
+    * NNs (not all are supervised!)
+
+Unsupervised learning:
+* Unlabelled learning, i.e. without an answer set
+* *Clustering*: Helps segment/group data points. A *HCA* is able to further subdivide each group into smaller groups.
+* *Visualisation*: Represented in 2D/3D space to manually inspect for data. Some smart clustering can be incorporated to prevent overlaps.
+* *Dimensionality reduction*: Simplify data without losing too much 
+* Types:
+    * Visualisation algorithms (2D, 3D)
+    * Clustering (K-means, DBSCAN, Hierarchical Cluster Analysis - HCA)
+    * Anomaly detection and novelty detection (One-class SVM, Isolation forest)
+    * Visualisation and dimensionality reduction (PCA, kernal PCA, Locally-linear embedding - LLE, t-distributed stochastic neighbour embedding - t-SNE)
+    * Association rule learning (Apriori, Eclat)
+
+Semisupervised learning:
+* Types:
+    * 
+    * Unsupervised pretraining
+
+Note:
+* Attribute is data type (e.g. mileage), feature is data type + value (mileage = 100)
+
+
+## <a name="sec3"></a>3. Chapter I-1 Exercises
+1. How would you define ML?
+* An algorithm that is able to improve its performance, given a dataset, typically tasked with classification or predictive tasks
+2. Name four problems where it shines?
+* 
+
+## <a name="sec4"></a>4. Chapter I-2: End-to-End ML project
+**Pages 63-111*
+
 ---
+## <a name="secZ"></a>Z. References
 [](Reference!------)  
 
 [2]: https://www.coursera.org/course/neuralnets
