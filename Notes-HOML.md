@@ -1,7 +1,7 @@
 # Hands-On Machine Learning (HOML) Notes
 *Notes and summary from Aurélien Geron's book by the same name (HOML)*
 
-#### ❗❗ Last stopped at page: 38
+#### ❗❗ Last stopped at page: 40 / 13.1
 
 ## Table of Contents
 | Index | Section                                       |
@@ -15,13 +15,13 @@
 ## <a name="sec1"></a>1. Preface summary*
 **Reference from p. 13-26*
 
-#### Tools/Framework to be used:
+### 1.1 Tools/Framework to be used:
 * **Scikit-Learn (SL)**: FOSS ML framework
 * **TensorFlow (TF)**: Google's ML framework
 * **Keras (KR)**: High level ML API that can be used on top of Tensor (although tensor has its own implementation)
 * **Python libs**: Numpy, Pandas, Matplotlib
 
-#### PART I Roadmap - ML Fundementals w/ SL:
+### 1.2 PART I Roadmap - ML Fundementals w/ SL:
 1. Understanding ML's concepts, categories and applications
 2. Main steps in an ML project
 3. Learning by fitting a model to data
@@ -34,7 +34,7 @@
 10. Unsupervised: Clustering, density estimation and anomaly detection
 11. Common: Linear/Polynomial regression, logistic regression, KNN, Support Vector Machines, Decision Trees, Randome forests and Ensemble methods 
 
-#### Part II Roadmap - Neural Nets (NNs) and Deep Learning (DL) w/ TF + KR:
+### 1.3 Part II Roadmap - Neural Nets (NNs) and Deep Learning (DL) w/ TF + KR:
 1. Intro to Neural Nets (applications and definition)
 2. Building and training NNs using Tensorflow + Keras
 3. Architecture: Feedforward NNs, CNNs, Recurrent nets, LSTM Nets, autoencoders and GANs
@@ -43,7 +43,7 @@
 6. Reinforcement learning
 7. Handling uncertainty with Bayesian Deep Learning
 
-#### Useful Resources (Further reading + Code examples):
+### 1.4 Useful Resources (Further reading + Code examples):
 * Andrew Ng's course on [ML in coursera][1]
 * Geoffrey Hinton's course on [NNs and DL][2]
 * Joel Grus' [Data Science from scratch][3]
@@ -58,11 +58,11 @@
 ## <a name="sec2"></a>2. Chapter I-1: The ML Landscape
 **Reference from p. 29 - 61*
 
-#### Definition
+### 2.1 ML Definition
 A computer program is said to learn from experience (E), with respect to task (T) and some performance measure (P), if its performance on T, as measured by P, improves with experience E. 
 > I.O.W. - A program with experience, should perform better on new tasks if it is said to be 'learning'.
 
-#### The traditional approach VS the new - ML
+### 2.2 The traditional approach VS the new - ML
 ![The traditional approach][i1]
 Traditional, analytical approaches require an iterative process where you look at a set of problem, identify and devise a set a solutions that tackle a subset of the problem, and iterate from there so that the final solution solves the problem completely - i.e. a normal software dev process.
 
@@ -80,13 +80,13 @@ Further, ML can solve problems that are either too complex. For complex solution
 
 Finally, ML can ***help humans learn and discover patterns to the problem. I.e. reveal correlations. This is called Data Mining***
 
-#### Types of ML systems
-Main categories:
-1. Supervision level (Sup, semi, un, reinforcement)
-2. Ability to learn on the fly (Online vs Batch)
-3. Instance based (comparing new to known data points) vs model-based learning (detect pattern in data for predictions)
+### 2.3 Types of ML systems
+#### Main categories:
+1. Supervision level (A. Supervised, B. Semisupervised, C. Unsupervised, D. Reinforcement learning)
+2. Ability to learn on the fly (A. Online vs B. Batch)
+3. A. Instance based (comparing new to known data points) vs B. Model-based learning (detect pattern in data for predictions)
 
-Supervised Learning:
+#### 1-A Supervised Learning:
 * *Classification*: Feed data with labels
 * *Prediction via regression*: Feed predictors (features), to predict a task's future values
 * Regression algorithms can be used for classification, i.e. *logistic regression* (probability of belonging to a class)
@@ -97,11 +97,16 @@ Supervised Learning:
     * Decision trees and random forests
     * NNs (not all are supervised!)
 
-Unsupervised learning:
+#### 1-B Unsupervised learning:
 * Unlabelled learning, i.e. without an answer set
 * *Clustering*: Helps segment/group data points. A *HCA* is able to further subdivide each group into smaller groups.
 * *Visualisation*: Represented in 2D/3D space to manually inspect for data. Some smart clustering can be incorporated to prevent overlaps.
-* *Dimensionality reduction*: Simplify data without losing too much 
+* *Dimensionality reduction*: Simplify data without losing too much info (i.e. compression)
+    * i.e. feature extraction: Using a car's age to represent the wear and tear of a car
+    * Usually done prior to a supervised learning method to simplify the problem set
+* *Anomaly detection*: Removing outliers before feeding into learning method. Tolerant even with small % of outliers in training set.
+* *Novelty detection*: Similar to anomaly, but less tolerant and only expects normal data during training
+* *Association rule learning*: Discovers interesting relations between attributes (i.e. Beef shoppers also buy chicken)
 * Types:
     * Visualisation algorithms (2D, 3D)
     * Clustering (K-means, DBSCAN, Hierarchical Cluster Analysis - HCA)
@@ -109,15 +114,22 @@ Unsupervised learning:
     * Visualisation and dimensionality reduction (PCA, kernal PCA, Locally-linear embedding - LLE, t-distributed stochastic neighbour embedding - t-SNE)
     * Association rule learning (Apriori, Eclat)
 
-Semisupervised learning:
+#### 1-C Semisupervised learning:
+* Partially labelled data, i.e. a lot of unlabelled, and a bit of labelled data
+* E.g. Clustering an identified person in a set of photographs, once a label is given, the person is known across the photographs. Usually there are several clusters for the same person, repeated labelling improves accuracy.
 * Types:
-    * 
+    * Deep Belief Networks (DBN)
+        * Comprised of stacked Restricted Boltzmann Machines 
+        * RBMs trained sequentially, unsupervised, and fine-tuned using supervised techniques
     * Unsupervised pretraining
+
+#### 1-D Reinforcement Learning
+* Learning system based on *Agents* - Observe the environment, select 
 
 Note:
 * Attribute is data type (e.g. mileage), feature is data type + value (mileage = 100)
 
-
+---
 ## <a name="sec3"></a>3. Chapter I-1 Exercises
 1. How would you define ML?
 * An algorithm that is able to improve its performance, given a dataset, typically tasked with classification or predictive tasks
