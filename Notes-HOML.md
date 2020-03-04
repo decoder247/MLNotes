@@ -1,7 +1,7 @@
 # Hands-On Machine Learning (HOML) Notes
 *Notes and summary from Aurélien Geron's book by the same name (HOML)*
 
-#### ❗❗ Last stopped at page: 40 / 13.1
+#### ❗❗ Last stopped at page: 41 / 15.1
 
 ## Table of Contents
 | Index | Section                                       |
@@ -9,8 +9,9 @@
 | 1.    | [Preface summary](#sec1)                      |
 | 2.    | [Chapter I-1: The ML Landscape](#sec2)        |
 | 3.    | [Chapter I-1: Exercises](#sec3)               |
-| 4.    | [4. Chapter I-2: End-to-End ML project](#sec4)|
+| 4.    | [Chapter I-2: End-to-End ML project](#sec4)   |
 
+---
 ---
 ## <a name="sec1"></a>1. Preface summary*
 **Reference from p. 13-26*
@@ -43,7 +44,7 @@
 6. Reinforcement learning
 7. Handling uncertainty with Bayesian Deep Learning
 
-### 1.4 Useful Resources (Further reading + Code examples):
+### 1.4 Useful Resources (Further reading // Code examples):
 * Andrew Ng's course on [ML in coursera][1]
 * Geoffrey Hinton's course on [NNs and DL][2]
 * Joel Grus' [Data Science from scratch][3]
@@ -62,7 +63,7 @@
 A computer program is said to learn from experience (E), with respect to task (T) and some performance measure (P), if its performance on T, as measured by P, improves with experience E. 
 > I.O.W. - A program with experience, should perform better on new tasks if it is said to be 'learning'.
 
-### 2.2 The traditional approach VS the new - ML
+### 2.2 The Traditional approach vs the ML approach
 ![The traditional approach][i1]
 Traditional, analytical approaches require an iterative process where you look at a set of problem, identify and devise a set a solutions that tackle a subset of the problem, and iterate from there so that the final solution solves the problem completely - i.e. a normal software dev process.
 
@@ -81,12 +82,12 @@ Further, ML can solve problems that are either too complex. For complex solution
 Finally, ML can ***help humans learn and discover patterns to the problem. I.e. reveal correlations. This is called Data Mining***
 
 ### 2.3 Types of ML systems
-#### Main categories:
+#### 2.3.1 Main categories:
 1. Supervision level (A. Supervised, B. Semisupervised, C. Unsupervised, D. Reinforcement learning)
 2. Ability to learn on the fly (A. Online vs B. Batch)
 3. A. Instance based (comparing new to known data points) vs B. Model-based learning (detect pattern in data for predictions)
 
-#### 1-A Supervised Learning:
+#### 2.3.2 Supervised Learning:
 * *Classification*: Feed data with labels
 * *Prediction via regression*: Feed predictors (features), to predict a task's future values
 * Regression algorithms can be used for classification, i.e. *logistic regression* (probability of belonging to a class)
@@ -97,7 +98,10 @@ Finally, ML can ***help humans learn and discover patterns to the problem. I.e. 
     * Decision trees and random forests
     * NNs (not all are supervised!)
 
-#### 1-B Unsupervised learning:
+Note:
+* Attribute is data type (e.g. mileage), feature is data type + value (mileage = 100)
+
+#### 2.3.3 Unsupervised learning:
 * Unlabelled learning, i.e. without an answer set
 * *Clustering*: Helps segment/group data points. A *HCA* is able to further subdivide each group into smaller groups.
 * *Visualisation*: Represented in 2D/3D space to manually inspect for data. Some smart clustering can be incorporated to prevent overlaps.
@@ -114,7 +118,7 @@ Finally, ML can ***help humans learn and discover patterns to the problem. I.e. 
     * Visualisation and dimensionality reduction (PCA, kernal PCA, Locally-linear embedding - LLE, t-distributed stochastic neighbour embedding - t-SNE)
     * Association rule learning (Apriori, Eclat)
 
-#### 1-C Semisupervised learning:
+#### 2.3.4 Semisupervised learning:
 * Partially labelled data, i.e. a lot of unlabelled, and a bit of labelled data
 * E.g. Clustering an identified person in a set of photographs, once a label is given, the person is known across the photographs. Usually there are several clusters for the same person, repeated labelling improves accuracy.
 * Types:
@@ -123,11 +127,15 @@ Finally, ML can ***help humans learn and discover patterns to the problem. I.e. 
         * RBMs trained sequentially, unsupervised, and fine-tuned using supervised techniques
     * Unsupervised pretraining
 
-#### 1-D Reinforcement Learning
-* Learning system based on *Agents* - Observe the environment, select 
+#### 2.3.5 Reinforcement Learning
+* Learning system based on *Agents* - observe the environment, select and perform actions, get *rewards/penalties* in return.
+* Learn the best *policy* (strategy) for most points via rewards/penalties for the *agent* to take
+* Application: Games, Robots (Tactic: Playing against itself)
 
-Note:
-* Attribute is data type (e.g. mileage), feature is data type + value (mileage = 100)
+![Reinforcement Learning][i1-12]
+
+#### 2.3.6 Batch and online learning
+* *Batch Learning*: 
 
 ---
 ## <a name="sec3"></a>3. Chapter I-1 Exercises
@@ -136,9 +144,12 @@ Note:
 2. Name four problems where it shines?
 * 
 
+---
+---
 ## <a name="sec4"></a>4. Chapter I-2: End-to-End ML project
 **Pages 63-111*
 
+---
 ---
 ## <a name="secZ"></a>Z. References
 [](Reference!------)  
@@ -146,4 +157,5 @@ Note:
 [2]: https://www.coursera.org/course/neuralnets
 [3]: http://shop.oreilly.com/product/0636920033400.do
 [book-github]: https://github.com/ageron/handson-ml2 
+[i1-12]: \Refs\HOML_fig1-12.png
 [i1]: https://i.imgur.com/DhjVk61.png "source - https://imgur.com/a/qvyuhVh"
