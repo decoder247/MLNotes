@@ -1,7 +1,7 @@
 # Hands-On Machine Learning (HOML) Notes
 *Notes and summary from Aurélien Geron's book by the same name (HOML)*
 
-#### ❗❗ Last stopped at page: 55 / 29
+#### ❗❗ Last stopped at page: 59 / 33
 
 ## Table of Contents
 | Index | Section                                       |
@@ -157,7 +157,7 @@ Note:
 * Having a good performance measure is not enough, *the key is to perform well in new instances, i.e. ***generalisation****.
 * *Defn*: As seen below, the new instance will be classified as a triangle as most similar instance belong to that class!
 ![Instance-based learning][i1-15]
-* Example: A system learns the examples by heart, and generalises new cases by comparing them to learned examples (or a subset of them), using a *similarity measure*.
+* Example: A system learns the examples by heart, and generalises new instances by comparing them to learned examples (or a subset of them), using a *similarity measure*.
 * Types:
     * Similarity measure (Does not find an average of the 'nearest neighbours'. K-NN does this instead, which is a regression model)
 
@@ -176,18 +176,18 @@ Note:
     * life_satisfaction = θ<sub>0</sub> + θ<sub>1</sub> × GDP_per_capita
     * *Model parameters*: θ<sub>0</sub>, θ<sub>1</sub>
     * Use *linear regression* to train model and determine parameter values!
-    * Study the data ➡ Model selection ➡ Train the model (Using the learning algorithm that determines the model parameters, via a cost/fitness fnc) ➡ Apply the model on new cases, *inference*, hoping it generalises well
+    * Gather + study the data ➡ Model selection ➡ Train the model (Using the learning algorithm that employs a cost/fitness fnc and determines the model parameters) + tune parameters ➡ Apply the model on new cases, *inference*, hoping it generalises well
 * Types:
     * Linear regression
     * Polynomial regression
     * K-NN regression
 
-#### 2.4 Main Challenges of ML
+### 2.4 Main Challenges of ML
 * Insufficient Training Data
 * Data quantity VS Algorithm quality
     * *Norvig's* 2009 paper on "The Unreasonable Effectiveness of Data" and *Banko/Brill*'s 2001 paper both suggest quantity of data yields more effective performance + larger gains, even with simpler algorithms.
 * Nonrepresentative training data
-    * Learning method needs to account for outliers so that it provides an accurate generalisation
+    * Learning method needs to account for outliers so that it can accurately generalise
     * ❌ Too small sample: Sampling noise i.e. Nonrepresentative data as a result of chance
     * ❌ Too large sample: Possibility of flawed sampling, i.e. *sampling bias* where data is biased based on the sampling method/grouping.
 ![A more representative training sample][i1-21]
@@ -195,7 +195,7 @@ Note:
     * Might need pre-processing (Outliers, noise, errors, missing features)
 
 * Irrelevant features
-    * *Feature engineering*: Consideration of features in the training step
+    * *Feature engineering*: Consideration of features in the training step. Useful features are important, otherise *garbage in, garbage out*!
         * *Feature selection*: Most useful features
         * *Feature extraction*: Combining existing features to produce smt more useful (dimensionality reduction algorithms!)
         * Creating new features
@@ -203,8 +203,38 @@ Note:
     * Overgeneralising ➡ i.e. works well on training data but not new data.
     * Overfitting happens when the model is too complex relative to noise, i.e. If the sample is too small, it will detect patterns in the noise itself
     ![Overfitting the training data][i1-22]
-    * Solutions: Simplify the model (linear > polynomial), Gather more training data, Reduce noise
+    * Solutions:
+        * Simplify the model (linear > polynomial)
+        * Gather more training data
+        * Reduce noise
+        * *Regularisation*: Constraining a model's parameters, i.e. by limiting its degrees of freedom
+    * *Regularisation* can be controlled by a *hyperparameter*, which is a parameter of the learning algorithm (i.e. How a linear model and its parameters are determined) and not a model parameter itself (i.e. θ<sub>0</sub>, θ<sub>1</sub>). This is set prior to training, and remains constant during. Tuning hyperparameters is a challenge.
+        * Too large: Flat model, not overfit training data
+        * Too small: Overfitting might occur.
+* Underfitting the training data
+    * *Defn*: When a model is too simple to learn the underlying structure of the data
+    * *Solutions*:
+        * Selecting a more complex model, with more parameters
+        * Feeding better features to the learning algorithm
+        * Reducing the constraints of the model (e.g. reducing regularisation hyperparameter)
 
+### 2.5 Testing and Validating
+* To test, training data is typically split in to the *training set* (80%) and the *test set* (20%). 
+* Error rate on new cases is called the *generalisation / out-of-sample error*, which evaluation on the test set will give a good estimation of.
+* A low training error and high generalisation error indicates ➡ OVERFITTING!
+
+#### 2.5.1 Hyperparameter tuning and model selection
+* A challenge in hyperparameter tuning is tuning the hyperparameters too perfectly for *that particular test set*!
+    * Example: In tuning a regularisation hyperparameter (to avoid overfitting) for a linear model, it is found hyperparameter 'A' produces a model with the least generalisation error of 5%. However in production it produces 15% errors!
+* *Holdout Validation*: Solution to selecting/tuning/training a model that is not too adapted to the test set (to a T issue)
+    * Segment a small part of the training set to a *validation set*. The hyperparameter tuning and model selection first occurs on the smaller training set alone, and then the best model + hyperparameter is selected and trained on the full training set (including the *validation set*) to get the final model.
+    * *Cross-validation*: Challenge here is determining the validation set size. Cross-validation solves this by using many small validation sets, and evaluating each model once per validation set and selecting the best one on average, before being trained on by the entire training set.
+
+#### Data Mismatch
+* When applying to problems of the real world, nonrepresentative data for training, in relation to the new data, can be a real issue.
+    * Example: Image recognition app for plants on phones. Using web images to train is not very representative. Let's say we have limited representative data: 10 thousand camera imgs, and 10 million web imgs.
+    * MOST IMPORTANT RULE, validation and test set must be as representative as possible. Half test, half validation.
+    * If perform poorly on validation, a solution to find out if overfitting is an issue by...
 
 ---
 ## <a name="sec3"></a>3. Chapter I-1 Exercises
