@@ -1,11 +1,11 @@
 # Hands-On Machine Learning (HOML) Notes
 *Notes and summary from Aurélien Geron's book by the same name (HOML)*
 
-#### ❗❗ Last stopped at page: 41 / 15.1
+#### ❗❗ Last stopped at page: 55 / 29
 
 ## Table of Contents
 | Index | Section                                       |
-|:-----:|-----------------------------------------------|
+|:------|-----------------------------------------------|
 | 1.    | [Preface summary](#sec1)                      |
 | 2.    | [Chapter I-1: The ML Landscape](#sec2)        |
 | 3.    | [Chapter I-1: Exercises](#sec3)               |
@@ -134,8 +134,77 @@ Note:
 
 ![Reinforcement Learning][i1-12]
 
-#### 2.3.6 Batch and online learning
-* *Batch Learning*: 
+#### 2.3.6 Batch learning / Offline learning
+* Defn: Incapable of learning incrementally, uses ALL available data
+* Also known as *offline learning* as it generally is computate/time-intensive, and thus done offline
+* Although needs retraining for new data, this process can be automated!
+* Applications: Non-volatile data. Not suitable for autonomous learning on limited resources (i.e. phones, rovers)
+
+#### 2.3.7 Online learning / Incremental learning
+* Defn: Learns incrementally in sequence, either individually or in small mini-batches. Also termed as *incremental learning*.
+* Advantages:
+    * On-the-fly learning
+    * Suitable for applications w/ limited resources (phones, rovers)
+    * Saves space by discarding trained data (unless want to roll back to previous state)
+    * Suitable for training huge datasets beyond capacity of core's memory, i.e. *out-of-core learning*, usually done OFFLINE!
+
+* Disadvantages:
+    * Need to consider *learning rate*, i.e. how adaptable the system is to new data.
+    * *Learning rate 🎗 Noise and Outliers sensitivity*. Having a high learning rate will 'place less significance' on the old data and lower inertia to noise
+    * Close monitoring required when dependent on quality of new data. If the new data is unreliable, manual intervention might be required, or an *anomaly detection algorithm* for abnormal data detection.
+
+#### 2.3.8 Instance based learning
+* Having a good performance measure is not enough, *the key is to perform well in new instances, i.e. ***generalisation****.
+* *Defn*: As seen below, the new instance will be classified as a triangle as most similar instance belong to that class!
+![Instance-based learning][i1-15]
+* Example: A system learns the examples by heart, and generalises new cases by comparing them to learned examples (or a subset of them), using a *similarity measure*.
+* Types:
+    * Similarity measure (Does not find an average of the 'nearest neighbours'. K-NN does this instead, which is a regression model)
+
+#### 2.3.9 Model based learning
+* *Defn*: As seen below a model is made instead for the prediction/classification of the new instance.
+![Model-based learning][i1-16]
+* Case study: Life satisfaction of a country can be modelled via a linear model, e.g. *selected* based on one *attribute*: GDP per capita. This selection step is called *model selection*.
+    * life_satisfaction = θ<sub>0</sub> + θ<sub>1</sub> × GDP_per_capita
+    * *Model parameters*: θ<sub>0</sub>, θ<sub>1</sub>
+* To determine a parameter value, a *performance measure* is required!
+    * *Cost function*: How bad the model is. Typically used in linear regression.
+    * *Fitness/Utility function*: How good the model is
+    * Example: In linear regression, a cost function is typically used to 'fit' the line to the data points, with a minimised cost/error between prediction and training examples.
+* Once a performance measure is determined, e.g. the linear regression algorithm, it can be fed the data / applied to *train the model* and determine the parameter values!
+* Case study revisited:
+    * life_satisfaction = θ<sub>0</sub> + θ<sub>1</sub> × GDP_per_capita
+    * *Model parameters*: θ<sub>0</sub>, θ<sub>1</sub>
+    * Use *linear regression* to train model and determine parameter values!
+    * Study the data ➡ Model selection ➡ Train the model (Using the learning algorithm that determines the model parameters, via a cost/fitness fnc) ➡ Apply the model on new cases, *inference*, hoping it generalises well
+* Types:
+    * Linear regression
+    * Polynomial regression
+    * K-NN regression
+
+#### 2.4 Main Challenges of ML
+* Insufficient Training Data
+* Data quantity VS Algorithm quality
+    * *Norvig's* 2009 paper on "The Unreasonable Effectiveness of Data" and *Banko/Brill*'s 2001 paper both suggest quantity of data yields more effective performance + larger gains, even with simpler algorithms.
+* Nonrepresentative training data
+    * Learning method needs to account for outliers so that it provides an accurate generalisation
+    * ❌ Too small sample: Sampling noise i.e. Nonrepresentative data as a result of chance
+    * ❌ Too large sample: Possibility of flawed sampling, i.e. *sampling bias* where data is biased based on the sampling method/grouping.
+![A more representative training sample][i1-21]
+* Poor quality data
+    * Might need pre-processing (Outliers, noise, errors, missing features)
+
+* Irrelevant features
+    * *Feature engineering*: Consideration of features in the training step
+        * *Feature selection*: Most useful features
+        * *Feature extraction*: Combining existing features to produce smt more useful (dimensionality reduction algorithms!)
+        * Creating new features
+* Overfitting the training data
+    * Overgeneralising ➡ i.e. works well on training data but not new data.
+    * Overfitting happens when the model is too complex relative to noise, i.e. If the sample is too small, it will detect patterns in the noise itself
+    ![Overfitting the training data][i1-22]
+    * Solutions: Simplify the model (linear > polynomial), Gather more training data, Reduce noise
+
 
 ---
 ## <a name="sec3"></a>3. Chapter I-1 Exercises
@@ -158,4 +227,8 @@ Note:
 [3]: http://shop.oreilly.com/product/0636920033400.do
 [book-github]: https://github.com/ageron/handson-ml2 
 [i1-12]: \Refs\HOML_fig1-12.png
+[i1-15]: https://i.imgur.com/0tnEtR0.png "source - https://imgur.com/a/bXdpiOZ"
+[i1-16]: https://i.imgur.com/9AacFOq.png "source - https://imgur.com/a/bR9Q2yR"
+[i1-21]: https://i.imgur.com/qNcP7zE.png "source - https://imgur.com/a/EOlvpR5"
+[i1-22]: https://i.imgur.com/1rbJLrs.png "source - https://imgur.com/a/RNmqcb8"
 [i1]: https://i.imgur.com/DhjVk61.png "source - https://imgur.com/a/qvyuhVh"
