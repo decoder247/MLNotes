@@ -112,11 +112,11 @@ Note:
 * *Novelty detection*: Similar to anomaly, but less tolerant and only expects normal data during training
 * *Association rule learning*: Discovers interesting relations between attributes (i.e. Beef shoppers also buy chicken)
 * Types:
+    * **Common**: Association rule learning (Apriori, Eclat)
     * Visualisation algorithms (2D, 3D)
     * Clustering (K-means, DBSCAN, Hierarchical Cluster Analysis - HCA)
     * Anomaly detection and novelty detection (One-class SVM, Isolation forest)
     * Visualisation and dimensionality reduction (PCA, kernal PCA, Locally-linear embedding - LLE, t-distributed stochastic neighbour embedding - t-SNE)
-    * Association rule learning (Apriori, Eclat)
 
 #### 2.3.4 Semisupervised learning:
 * Partially labelled data, i.e. a lot of unlabelled, and a bit of labelled data
@@ -146,7 +146,7 @@ Note:
     * On-the-fly learning
     * Suitable for applications w/ limited resources (phones, rovers)
     * Saves space by discarding trained data (unless want to roll back to previous state)
-    * Suitable for training huge datasets beyond capacity of core's memory, i.e. *out-of-core learning*, usually done OFFLINE!
+    * Suitable for training huge datasets beyond capacity of core's memory, i.e. *out-of-core learning*, typically done in mini-batches and done OFFLINE!
 
 * Disadvantages:
     * Need to consider *learning rate*, i.e. how adaptable the system is to new data.
@@ -243,10 +243,52 @@ Note:
 
 ---
 ## <a name="sec3"></a>3. Chapter I-1 Exercises
-1. How would you define ML?
-* An algorithm that is able to improve its performance, given a dataset, typically tasked with classification or predictive tasks
-2. Name four problems where it shines?
-* 
+1. **ML Definition**?
+    * An algorithm or method that is able to improve its performance with added input / data, typically for predictive or classification tasks.
+2. **Four problem types where ML shines**?
+    * Large amount of labelled data available
+    * Too complex, i.e. no analytical solution
+    * Require frequent updating of rules
+    * Require insights into unfamiliar data
+    * Volatile data environment
+3. **Labelled training set definition**?
+    * A training set with known, attached, answers.
+4. **Two most common supervised tasks**?
+    * Classification
+    * Prediction
+5. **Four common unsupervised tasks**?
+    * Clustering
+    * Visualisation and Dimensionality reduction
+    * Anomaly and novelty detection
+    * Association rule learning
+6. **ML algo for allowing a robot to walk in unknown terrains**?
+    * Reinforcement learning
+7. **ML algo to segment customers into multiple groups?**
+    * HCA - Heirarchal Cluster Algorithm
+8. **Spam detection: Supervised or unsupervised learning?**
+    * Supervised and semi-supervised, as the user can manually label spam
+9. **Online learning system definition?**
+    * Able to learn incrementally, but usually trained offline initially!
+10. **Out-of-core learning definition?**
+    * Learning beyond the memory capacity / compute-power of the computer being used for training. Usually occurs in context of online learning where the computer incrementally trains on mini-batches, before being trained on new instances. 
+11. **Learning algo that relies on similarity measure?**
+    * Instance-based learning
+12. **Model parameter VS learning algorithm's hyperparameter?**
+    * -
+13. **What do model-based learning algos search? Most common strategies? How predictions made?**
+    * -
+14. **Main ML challenges?**
+    * -
+15. **Model performs great one training data, but generalises poorly on new instances. What is happening? Name 3 solutions.**
+    * -
+16. **What is a test set and its use?**
+    * -
+17. **What use is a validation set?**
+    * -
+18. **Why don't you tune hyperparameters with the test set?**
+    * -
+19. **Why repeated cross-validation > single validation set?**
+    * -
 
 ---
 ---
@@ -261,7 +303,7 @@ Note:
 [2]: https://www.coursera.org/course/neuralnets
 [3]: http://shop.oreilly.com/product/0636920033400.do
 [book-github]: https://github.com/ageron/handson-ml2 
-[i1-12]: \Refs\HOML_fig1-12.png
+[i1-12]: \Docs\HOML_fig1-12.png
 [i1-15]: https://i.imgur.com/0tnEtR0.png "source - https://imgur.com/a/bXdpiOZ"
 [i1-16]: https://i.imgur.com/9AacFOq.png "source - https://imgur.com/a/bR9Q2yR"
 [i1-21]: https://i.imgur.com/qNcP7zE.png "source - https://imgur.com/a/EOlvpR5"
