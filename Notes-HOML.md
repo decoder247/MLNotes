@@ -238,7 +238,8 @@ Note:
     * **Poor train-dev** set performance: Overfitting exists! ➡ Need to simplify / regularize model, get more data or clean up data as aforementioned.
     * **Good train-dev** set performance: Overfitting did not occur on training set, thus if poor validation set performance, Data Mismatch! ➡ Would need to make data more representative / accurate, i.e. via preprocessing.
 * **No Free Lunch Theorem:** David Wolpert's 1996 paper asserts: *If no assumption is made about the data, there is no reason to prefer one model over another!*
-    * There is no model that is *a priori* (from theory, reasoned truths) guaranteed to work better.
+    * There is no model that is *a priori* (from theory, reasoned truths) guaranteed to work better, some datasets fit a linear model better, others a neural network.
+    * Since the ML approach to problem solving is not analytical, i.e. via a certain known theory about the data, there is no 'a priori' knowledge about the data, therefore no assumptions can be made!
 
 ---
 ## <a name="sec3"></a>3. Chapter I-1 Exercises
