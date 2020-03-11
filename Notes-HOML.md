@@ -230,11 +230,15 @@ Note:
     * Segment a small part of the training set to a *validation set*. The hyperparameter tuning and model selection first occurs on the smaller training set alone, and then the best model + hyperparameter is selected and trained on the full training set (including the *validation set*) to get the final model.
     * *Cross-validation*: Challenge here is determining the validation set size. Cross-validation solves this by using many small validation sets, and evaluating each model once per validation set and selecting the best one on average, before being trained on by the entire training set.
 
-#### Data Mismatch
+#### 2.5.2 Data Mismatch
 * When applying to problems of the real world, nonrepresentative data for training, in relation to the new data, can be a real issue.
-    * Example: Image recognition app for plants on phones. Using web images to train is not very representative. Let's say we have limited representative data: 10 thousand camera imgs, and 10 million web imgs.
-    * MOST IMPORTANT RULE, validation and test set must be as representative as possible. Half test, half validation.
-    * If perform poorly on validation, a solution to find out if overfitting is an issue by...
+* Example: Image recognition app for plants on phones. Using web images to train is not very representative. Let's say we have limited representative data: 10 thousand camera imgs, and 10 million web imgs.
+* MOST IMPORTANT RULE, validation and test set must be as representative as possible. Half test, half validation.
+* If perform poorly on validation, a solution to find out if overfitting is an issue is by segmenting a training set further with a *train-dev set* (per Andrew Ng). After first training on the training set, the *train-dev set* is used for preliminary evaluation. A good evaluation performance determines overfitting doesn't exist, and therefore if it performs poorly on the validation set, data mismatch is the cause!
+    * **Poor train-dev** set performance: Overfitting exists! ➡ Need to simplify / regularize model, get more data or clean up data as aforementioned.
+    * **Good train-dev** set performance: Overfitting did not occur on training set, thus if poor validation set performance, Data Mismatch! ➡ Would need to make data more representative / accurate, i.e. via preprocessing.
+* **No Free Lunch Theorem:** David Wolpert's 1996 paper asserts: *If no assumption is made about the data, there is no reason to prefer one model over another!*
+    * There is no model that is *a priori* (from theory, reasoned truths) guaranteed to work better.
 
 ---
 ## <a name="sec3"></a>3. Chapter I-1 Exercises
