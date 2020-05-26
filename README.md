@@ -13,7 +13,7 @@
 
 ## <a name="sec1"></a>1. Introduction / General
 
-?? asdasdasd
+?? asda
 
 ## <a name="sec2"></a>1. Hands-On Machine Learning
 
