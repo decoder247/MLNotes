@@ -2,7 +2,7 @@
 
 *Notes and summary from Aurélien Geron's HOML book*
 
-#### ❗❗ Last stopped at page: 66 / 40         //   ~~*Catch-up @ [here](here_link)*~~
+#### ❗❗ Last stopped at page: 69 / 43         //   ~~*Catch-up @ [here](here_link)*~~
 
 ## Table of Contents
 
@@ -430,7 +430,7 @@ Using the above dataset, we are provided with the population, median income, med
 
 ### 4.2.1 Frame the problem
 
-Building a model is not the end goal. We need to ask - what is the exact business objective, and how can the company expect to use and benefit from the model? This will determine:
+Building a model is not the end goal. **First question we need to ask - what is the exact business objective**? And how can the company expect to use and benefit from the model? This will determine:
 
 1. What algorithms to select
 
@@ -444,17 +444,51 @@ Applying this to the example: we want a prediction of a district's median housin
 
 *Figure 2-2. A Machine Learning pipeline for real estate investments*
 
-#### **Data Pipelines in ML**
+For this example, we want our model output to predict a district's median housing price to be fed to another ML system, which is fed other *signals*. As seen, our prediction will critically affect the downstream system.
 
-**Definition:** A sequence of data processing *components*, typically run asynchronously.
+> #### **Data Pipelines in ML**
 
-Components typically run asynchronously, and processes large amounts of data to output a result, sent to another data store, for the next component to process (i.e. in sequence).
+> **Definition:** A *data pipeline* is a sequence of data processing *components*, typically run asynchronously (i.e. multiple threads).
 
-Advantages:
+> Pipeline are common in ML systems. Each component pulls a large amount of data, processes it, and outputs the result into a data store (i.e. one of the district data blocks in *Figure 2-2*), which is then retreived and used by the next component for processing. The **interface between components is thus these data stores**.
+> 
+> Advantages:
+> 
+> * Asynchronronous operations with data stores as interface between components.
+> 
+> * Each component is self-contained and generally a straightforward, simple design.  Different teams can focus on different components.
+> 
+> * Robust architecture - downstream components can continue to run normally for a while by using the last output of a broken-down component
 
-* Each component is self-contained and interface is simply the data store
+> Disadvantages:
 
-* Straghtforward, simple design, with interface between components being the....$$
+> * Require monitoring for broken-down components as data can get stale / lower performance if a broken component is unnoticed.
+
+**Second question to ask - what does the current solution look like (if any)?** This will give a reference performance and insights into how to solve the problem.
+
+For this example, the district (median) housing prices are currently manually estimated by experts using up-to-date information about a district, and complex rules. This is costly, time-consuming and usually inaccurate.
+
+**We now need to frame the problem:** Is it supervised, unsupervised or reinforcement learning? Is it a classification task,  regression task, other? Batch or online?
+
+For this example it is a supervised learning task given *labeled* training examples. This is a typical regression task since we are asked to predict a value - specifically a *multiple regression* problem since we will be **using multiple features** for a prediction. It is a *univariate regression* problem as we are **predicting a single value**. Moreover, there is no continuous flow of data coming in the system, so there is no particular need to adjust to changing data rapidly, plus datasize can fit in memory, so batch learning is suitable.
+
+> Huge data can utlise from splitting batch learning work accross multiple servers (i.e. using *MapReduce* technique) or online learning.
+
+### 4.2.3 Select a performance measure
+
+A typical performance measure for regression problems is the *Root Mean Square Error* (RMSE). RMSE gives an indication to a system's prediction error and assigns a higher weight for large errors. 
+
+$$
+RMSE(X,h) = \sqrt{\frac{1}{m}.\sum_{i=1}^{m} (h(x^{(i)})-y^{(i)})^2}
+$$
+
+*Equation 2-1. Root Mean Square Error (RMSE)*
+
+> #### Notations
+> 
+> $$
+
+
 
 ---
 
